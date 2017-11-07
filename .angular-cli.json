@@ -1,25 +1,21 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "dotacs"
+    "name": "one-with-angular"
   },
   "apps": [
     {
-        "root": "src",
-        "outDir": "dist",
-        "assets": [
-          "assets",
-         "favicon.ico",
-          {
-            "glob": "index.js",
-            "input": "./server/",
-            "output": "./"
-          },
-          {
-            "glob": "package.json",
-            "input": "./server/",
-            "output": "./"
-          },
+      "root": "src/client",
+      "outDir": "dist/publicweb",
+      "assets": [
+        "assets",
+        "favicon.ico",
+        {
+          "glob": "**/*.*",
+          "input": "../server/",
+          "output": "../"
+        },
+        "manifest.json"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -27,10 +23,11 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
-      "styles": [
-        "styles.css"
-      ],
+      "prefix": "ro",
+      "styles": ["styles/theme.scss", "styles/mixin.scss", "styles/styles.scss"],
+      "stylePreprocessorOptions": {
+        "includePaths": ["styles"]
+      },
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -46,11 +43,11 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json",
+      "project": "src/client/tsconfig.app.json",
       "exclude": "**/node_modules/**"
     },
     {
-      "project": "src/tsconfig.spec.json",
+      "project": "src/client/tsconfig.spec.json",
       "exclude": "**/node_modules/**"
     },
     {
@@ -64,7 +61,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }
